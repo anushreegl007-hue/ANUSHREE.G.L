@@ -81,6 +81,19 @@ void drawCircle(int centerRow, int centerCol, int radius)
         }
     }
 }
+void deleteArea(int row, int col, int height, int width)
+{
+    for(int i=row; i<row+height; i++)
+    {
+        for(int j=col; j<col+width; j++)
+        {
+            if(i < ROWS && j < COLS)
+            {
+                canvas[i][j] = '_';
+            }
+        }
+    }
+}
 
 
 int main()
@@ -91,6 +104,9 @@ int main()
     drawLine(2, 5, 25);
     drawTriangle(10, 5, 5);
     drawCircle(12, 30, 3);
+    
+    deleteArea(6, 12, 2, 3);
+    
 
     displayCanvas();
 
