@@ -94,6 +94,13 @@ void deleteArea(int row, int col, int height, int width)
         }
     }
 }
+void modifyRectangle(int oldRow, int oldCol, int oldHeight, int oldWidth,
+                     int newRow, int newCol, int newHeight, int newWidth)
+{
+    deleteArea(oldRow, oldCol, oldHeight, oldWidth);
+
+    drawRectangle(newRow, newCol, newHeight, newWidth);
+}
 
 
 int main()
@@ -106,6 +113,9 @@ int main()
     drawCircle(12, 30, 3);
     
     deleteArea(6, 12, 2, 3);
+    modifyRectangle(5, 10, 4, 8,
+                1, 20, 3, 6);
+    
     
 
     displayCanvas();
