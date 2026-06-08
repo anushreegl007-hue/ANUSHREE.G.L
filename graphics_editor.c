@@ -94,11 +94,16 @@ void deleteArea(int row, int col, int height, int width)
         }
     }
 }
+
+void clearCanvas()
+{
+    initializeCanvas();
+}
+
 void modifyRectangle(int oldRow, int oldCol, int oldHeight, int oldWidth,
                      int newRow, int newCol, int newHeight, int newWidth)
 {
     deleteArea(oldRow, oldCol, oldHeight, oldWidth);
-
     drawRectangle(newRow, newCol, newHeight, newWidth);
 }
 int main()
@@ -115,9 +120,11 @@ int main()
         printf("3. Draw Triangle\n");
         printf("4. Draw Circle\n");
         printf("5. Delete Area\n");
-        printf("6. Modify Rectangle\n");
-        printf("7. Display Canvas\n");
+        printf("6. Clear Canvas\n");
+        printf("7. Modify Rectangle\n");
+        printf("8. Display Canvas\n");
         printf("0. Exit\n");
+
         printf("Enter choice: ");
         scanf("%d", &choice);
 
@@ -164,11 +171,19 @@ int main()
                 int row, col, height, width;
                 printf("Enter row col height width to delete: ");
                 scanf("%d %d %d %d", &row, &col, &height, &width);
+
                 deleteArea(row, col, height, width);
                 break;
             }
 
             case 6:
+            {
+                clearCanvas();
+                printf("Canvas cleared successfully!\n");
+                break;
+            }
+
+            case 7:
             {
                 int oldRow, oldCol, oldHeight, oldWidth;
                 int newRow, newCol, newHeight, newWidth;
@@ -188,7 +203,7 @@ int main()
                 break;
             }
 
-            case 7:
+            case 8:
                 displayCanvas();
                 break;
 
@@ -205,4 +220,4 @@ int main()
     return 0;
 }
 
-
+    
