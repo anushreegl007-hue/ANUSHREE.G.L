@@ -101,24 +101,108 @@ void modifyRectangle(int oldRow, int oldCol, int oldHeight, int oldWidth,
 
     drawRectangle(newRow, newCol, newHeight, newWidth);
 }
-
-
 int main()
 {
+    int choice;
+
     initializeCanvas();
 
-    drawRectangle(5, 10, 4, 8);
-    drawLine(2, 5, 25);
-    drawTriangle(10, 5, 5);
-    drawCircle(12, 30, 3);
-    
-    deleteArea(6, 12, 2, 3);
-    modifyRectangle(5, 10, 4, 8,
-                1, 20, 3, 6);
-    
-    
+    do
+    {
+        printf("\n===== 2D Graphics Editor =====\n");
+        printf("1. Draw Rectangle\n");
+        printf("2. Draw Line\n");
+        printf("3. Draw Triangle\n");
+        printf("4. Draw Circle\n");
+        printf("5. Delete Area\n");
+        printf("6. Modify Rectangle\n");
+        printf("7. Display Canvas\n");
+        printf("0. Exit\n");
+        printf("Enter choice: ");
+        scanf("%d", &choice);
 
-    displayCanvas();
+        switch(choice)
+        {
+            case 1:
+            {
+                int row, col, height, width;
+                printf("Enter row col height width: ");
+                scanf("%d %d %d %d", &row, &col, &height, &width);
+                drawRectangle(row, col, height, width);
+                break;
+            }
+
+            case 2:
+            {
+                int row, startCol, endCol;
+                printf("Enter row startCol endCol: ");
+                scanf("%d %d %d", &row, &startCol, &endCol);
+                drawLine(row, startCol, endCol);
+                break;
+            }
+
+            case 3:
+            {
+                int row, col, height;
+                printf("Enter row col height: ");
+                scanf("%d %d %d", &row, &col, &height);
+                drawTriangle(row, col, height);
+                break;
+            }
+
+            case 4:
+            {
+                int centerRow, centerCol, radius;
+                printf("Enter centerRow centerCol radius: ");
+                scanf("%d %d %d", &centerRow, &centerCol, &radius);
+                drawCircle(centerRow, centerCol, radius);
+                break;
+            }
+
+            case 5:
+            {
+                int row, col, height, width;
+                printf("Enter row col height width to delete: ");
+                scanf("%d %d %d %d", &row, &col, &height, &width);
+                deleteArea(row, col, height, width);
+                break;
+            }
+
+            case 6:
+            {
+                int oldRow, oldCol, oldHeight, oldWidth;
+                int newRow, newCol, newHeight, newWidth;
+
+                printf("Enter old row col height width: ");
+                scanf("%d %d %d %d",
+                      &oldRow, &oldCol,
+                      &oldHeight, &oldWidth);
+
+                printf("Enter new row col height width: ");
+                scanf("%d %d %d %d",
+                      &newRow, &newCol,
+                      &newHeight, &newWidth);
+
+                modifyRectangle(oldRow, oldCol, oldHeight, oldWidth,
+                                newRow, newCol, newHeight, newWidth);
+                break;
+            }
+
+            case 7:
+                displayCanvas();
+                break;
+
+            case 0:
+                printf("Exiting...\n");
+                break;
+
+            default:
+                printf("Invalid choice!\n");
+        }
+
+    } while(choice != 0);
 
     return 0;
 }
+
+
