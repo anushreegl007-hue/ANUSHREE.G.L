@@ -1,0 +1,58 @@
+This is the prompt i have given to Anti Gravity
+Problem Statement: Write a 2d graphics editor using * and  _.
+
+Write functions to draw a circle, rectangle, line, and triangle.
+You should be able to
+      add objects to the picture,
+      delete objects from the picture, and
+       modify objects in the picture.
+Use a 2d array of characters to store the picture.
+Write a function to display the picture.
+
+
+The response from AI-
+
+Additionally, you can use the ncurses package to create menus and draw pictures.
+I have created the 
+implementation_plan.md
+.
+
+Please review the proposed architecture, shape representation, and compilation design. Let me know if you approve this plan or if you would like me to adjust any aspects (specifically, compiling with ncurses/PDCurses vs. using portable ANSI escape sequences).
+
+Implementation Plan
+5:07 PM
+
+
+
+-->give me code within/around 500 lines and give all together while asking the user to add ,delete,modify,clear canvas,exit.
+5:10 PM
+
+
+I have created a single-file C 2D ASCII graphics editor that fits within 500 lines and fulfills all your requirements.
+
+File Links & Workspace
+Project Directory: C:\Users\punya\.gemini\antigravity\scratch\graphics_editor (I recommend setting this subdirectory as your active workspace in your editor)
+
+Source Code: 
+main.c
+
+Progress Checklist: 
+task.md
+
+Detailed Documentation: 
+walkthrough.md
+Features & Design
+
+Interactive Menu: Prompts you to add, delete, modify, clear canvas, and exit.
+Standard Rasterization Algorithms:
+Lines: Bresenham's Line Algorithm.
+Circles: Midpoint Circle Algorithm.
+Rectangles: Outlined coordinates bounds drawing.
+Triangles: Connects 3 points with 3 line segments.
+
+Canvas Features:
+Represented by an 80x20 2D character array.
+Background fills with _ and drawings default to * (custom characters are also supported).
+Surrounding column/row index headers make entering coordinates simple.
+Console Experience: Polished terminal output utilizing ANSI colors.
+Crash Prevention: All coordinate indexing checks bounds first, and safe string-to-integer parses prevent scanf infinite loops.
